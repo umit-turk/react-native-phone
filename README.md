@@ -25,19 +25,20 @@ React Native Phone is a comprehensive phone input solution for React Native appl
 - TypeScript support
 - Performance optimized
 
-## Screenshots
+## Demo
 
-### iOS
-![iOS Empty State](screenshots/ios-empty.png)
-![iOS Input State](screenshots/ios-input.png)
-![iOS Country Picker](screenshots/modal.png)
+### Video Demo
+![Demo Video](videos/demo-ios.mp4)
+![Demo Video](videos/demo-android.webm)
 
-### Android
-![Android Empty State](screenshots/android-empty.png)
-![Android Input State](screenshots/android-input.png)
-![Android Country Picker](screenshots/modal-android.png)
+The video above demonstrates:
+- Phone number input with country selection
+- Real-time formatting
+- Country search functionality
+- Error handling
+- Disabled state behavior
 
-The package works seamlessly on both iOS and Android platforms. As shown in the screenshots above, it features:
+The package works seamlessly on both iOS and Android platforms. As shown in the videos above, it features:
 
 - Country selection with flag display
 - Country-specific phone number formatting
@@ -69,11 +70,9 @@ import { PhoneInput } from 'react-native-phone';
 
 const PhoneInputExample = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handlePhoneChange = (value, country) => {
     setPhoneNumber(value);
-    setSelectedCountry(country);
   };
 
   return (
@@ -82,6 +81,7 @@ const PhoneInputExample = () => {
       onChange={handlePhoneChange}
       defaultCountry="TR"
       includeDialCode={true}
+      disabled={false}
     />
   );
 };
@@ -102,11 +102,9 @@ import { PhoneInput } from 'react-native-phone';
 
 const PhoneInputExample = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handlePhoneChange = (value, country) => {
     setPhoneNumber(value);
-    setSelectedCountry(country);
   };
 
   return (
@@ -158,19 +156,18 @@ import { PhoneInput } from 'react-native-phone';
 
 const PhoneInputExample = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handlePhoneChange = (value, country) => {
     setPhoneNumber(value);
-    setSelectedCountry(country);
   };
 
   return (
     <PhoneInput
       value={phoneNumber}
       onChange={handlePhoneChange}
-      defaultCountry="US"
+      defaultCountry="TR"
       includeDialCode={true}
+      disabled={false}
     />
   );
 };
@@ -188,6 +185,7 @@ const PhoneInputExample = () => {
 - `label`: Input label text
 - `error`: Error message
 - `isError`: Error state flag
+- `disabled`: When set to true, the input becomes read-only and country picker becomes disabled (default: false)
 
 ## Styling
 
@@ -198,6 +196,7 @@ const PhoneInputExample = () => {
     containerStyle: {
       borderRadius: 12,
       height: 56,
+      width: "100%",
     },
     labelStyle: {
       fontSize: 18,
@@ -205,6 +204,19 @@ const PhoneInputExample = () => {
     },
     inputStyle: {
       fontSize: 16,
+      flex: 1,
+    },
+  }}
+/>
+```
+
+### Disabled State Styling
+```jsx
+<PhoneInput
+  disabled={true}
+  styles={{
+    containerStyle: {
+      opacity: 0.7,
     },
   }}
 />
@@ -335,6 +347,7 @@ interface PhoneInputProps {
   label?: string;
   error?: string;
   isError?: boolean;
+  disabled?: boolean;
   styles?: PhoneInputStyles;
   errorStyles?: ErrorStyles;
   modalConfig?: ModalConfig;

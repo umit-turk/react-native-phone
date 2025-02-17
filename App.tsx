@@ -6,20 +6,17 @@ import { DEFAULT_COLORS } from './src/constants/styles';
 export default function App() {
   // State
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [error, setError] = useState<string>('');
 
   // Event handlers
   const handlePhoneChange = useCallback((value: string, country: Country) => {
     setPhoneNumber(value);
-    setSelectedCountry(country);
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
               <PhoneInput
-                // Temel özellikler
                 value={phoneNumber}
                 onChange={handlePhoneChange}
                 defaultCountry="US"

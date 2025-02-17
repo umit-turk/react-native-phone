@@ -50,4 +50,7 @@ export interface PhoneInputProps {
   // Modal ve liste konfigürasyonu
   modalConfig?: ModalConfig;
   countryListConfig?: CountryListConfig;
+
+  // Yeni eklenen özellik
+  disabled?: boolean;
 }

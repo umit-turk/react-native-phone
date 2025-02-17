@@ -8,6 +8,7 @@ interface CountryPickerButtonProps {
   isError?: boolean;
   errorTextColor?: string;
   onPress: () => void;
+  disabled?: boolean;
 }
 
 export const CountryPickerButton: React.FC<CountryPickerButtonProps> = ({
@@ -15,20 +16,25 @@ export const CountryPickerButton: React.FC<CountryPickerButtonProps> = ({
   isError,
   errorTextColor,
   onPress,
-}) => (
-  <TouchableOpacity
-    style={[
-      styles.container,
-      { borderRightColor: isError ? errorTextColor : DEFAULT_COLORS.border },
-    ]}
-    onPress={onPress}
-  >
-    <Text style={styles.flag}>{country.emoji}</Text>
-    <Text style={[styles.countryCode, isError && { color: errorTextColor }]}>
-      {country.dial_code}
-    </Text>
-  </TouchableOpacity>
-);
+  disabled = false,
+}) => {
+  return (
+    <TouchableOpacity 
+      onPress={onPress} 
+      style={[
+        styles.container,
+        { borderRightColor: isError ? errorTextColor : DEFAULT_COLORS.border },
+        disabled && { opacity: 0.7 }
+      ]}
+      disabled={disabled}
+    >
+      <Text style={styles.flag}>{country.emoji}</Text>
+      <Text style={[styles.countryCode, isError && { color: errorTextColor }]}>
+        {country.dial_code}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -23,6 +23,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   label,
   error,
   isError = false,
+  disabled = false,
   styles: customStyles = {},
   errorStyles: customErrorStyles = {},
   modalConfig = {},
@@ -85,7 +86,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   );
 
   return (
-    <View>
+    <View style={{ width: "100%" }}>
       {label && (
         <Text
           style={[
@@ -100,19 +101,23 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
         style={[
           mergedStyles.container,
           isError && { borderColor: errorStyles.errorBorderColor },
+          { width: "100%" },
+          disabled && { opacity: 0.7 },
         ]}
       >
         <CountryPickerButton
           country={selectedCountry}
           isError={isError}
           errorTextColor={errorStyles.errorTextColor}
-          onPress={() => setModalVisible(true)}
+          onPress={() => !disabled && setModalVisible(true)}
+          disabled={disabled}
         />
 
         <TextInput
           style={[
             mergedStyles.input,
             isError && { color: errorStyles.errorTextColor },
+            { flex: 1 },
           ]}
           value={formatPhoneNumber(value, selectedCountry, includeDialCode)}
           onChangeText={handleChangeText}
@@ -122,6 +127,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
             isError ? errorStyles.errorTextColor : DEFAULT_COLORS.placeholder
           }
           maxLength={getMaxLength(selectedCountry) + 10}
+          editable={!disabled}
         />
       </View>
 
@@ -157,5 +163,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 10,
+    width: "100%",
   },
 });

@@ -1,18 +1,18 @@
-import React, { useCallback } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  Modal, 
-  FlatList, 
-  StyleSheet, 
-  SafeAreaView, 
-  Pressable 
-} from 'react-native';
-import { Country } from '../data/countries';
-import { ModalConfig, CountryListConfig } from '../types';
-import { DEFAULT_COLORS } from '../constants/styles';
-import { CountryListItem } from './CountryListItem';
+import React, { useCallback } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Modal,
+  FlatList,
+  StyleSheet,
+  SafeAreaView,
+  Pressable,
+} from "react-native";
+import { Country } from "../data/countries";
+import { ModalConfig, CountryListConfig } from "../types";
+import { DEFAULT_COLORS } from "../constants/styles";
+import { CountryListItem } from "./CountryListItem";
 
 interface CountryPickerModalProps {
   visible: boolean;
@@ -35,43 +35,49 @@ export const CountryPickerModal: React.FC<CountryPickerModalProps> = ({
   modalConfig,
   countryListConfig,
 }) => {
-  const ItemSeparator = useCallback(() => (
-    countryListConfig.showSeparator !== false ? (
-      <View style={[styles.separator, countryListConfig.separatorStyle]} />
-    ) : null
-  ), [countryListConfig.showSeparator, countryListConfig.separatorStyle]);
+  const ItemSeparator = useCallback(
+    () =>
+      countryListConfig.showSeparator !== false ? (
+        <View style={[styles.separator, countryListConfig.separatorStyle]} />
+      ) : null,
+    [countryListConfig.showSeparator, countryListConfig.separatorStyle],
+  );
 
-  const keyExtractor = useCallback((item: Country) => 
-    `${item.code}-${item.dial_code}`, []);
+  const keyExtractor = useCallback(
+    (item: Country) => `${item.code}-${item.dial_code}`,
+    [],
+  );
 
-  const renderItem = useCallback(({ item }: { item: Country }) => (
-    <CountryListItem
-      item={item}
-      onSelect={onSelectCountry}
-      nameStyle={countryListConfig.nameStyle}
-      dialCodeStyle={countryListConfig.dialCodeStyle}
-    />
-  ), [onSelectCountry, countryListConfig.nameStyle, countryListConfig.dialCodeStyle]);
+  const renderItem = useCallback(
+    ({ item }: { item: Country }) => (
+      <CountryListItem
+        item={item}
+        onSelect={onSelectCountry}
+        nameStyle={countryListConfig.nameStyle}
+        dialCodeStyle={countryListConfig.dialCodeStyle}
+      />
+    ),
+    [
+      onSelectCountry,
+      countryListConfig.nameStyle,
+      countryListConfig.dialCodeStyle,
+    ],
+  );
 
   return (
-    <Modal
-      visible={visible}
-      animationType="slide"
-      onRequestClose={onClose}
-    >
+    <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
       <SafeAreaView style={[styles.container, modalConfig.modalStyle]}>
         <View style={styles.header}>
           <TextInput
             style={[styles.searchInput, modalConfig.searchInputStyle]}
             value={searchQuery}
             onChangeText={onSearchChange}
-            placeholder={modalConfig.searchPlaceholder ?? "Search country or code"}
+            placeholder={
+              modalConfig.searchPlaceholder ?? "Search country or code"
+            }
             placeholderTextColor={DEFAULT_COLORS.placeholder}
           />
-          <Pressable 
-            style={styles.closeButton}
-            onPress={onClose}
-          >
+          <Pressable style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>
               {modalConfig.closeButtonText ?? "Close"}
             </Text>
@@ -101,8 +107,8 @@ const styles = StyleSheet.create({
     backgroundColor: DEFAULT_COLORS.background,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: DEFAULT_COLORS.border,
@@ -130,4 +136,4 @@ const styles = StyleSheet.create({
   listContent: {
     flexGrow: 1,
   },
-}); 
+});

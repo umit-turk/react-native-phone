@@ -1,5 +1,5 @@
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import { Country } from '../data/countries';
+import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import { Country } from "../data/countries";
 
 export interface ModalConfig {
   searchPlaceholder?: string;
@@ -35,19 +35,19 @@ export interface PhoneInputProps {
   onChange: (value: string, country: Country) => void;
   defaultCountry?: string;
   includeDialCode?: boolean;
-  
+
   // Label özellikleri
   label?: string;
-  
+
   // Error özellikleri
   error?: string;
   isError?: boolean;
-  
+
   // Stil özellikleri
   styles?: PhoneInputStyles;
   errorStyles?: ErrorStyles;
-  
+
   // Modal ve liste konfigürasyonu
   modalConfig?: ModalConfig;
   countryListConfig?: CountryListConfig;
-} 
+}

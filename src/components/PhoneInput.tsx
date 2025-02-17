@@ -1,16 +1,24 @@
-import React, { useState, useCallback, useMemo } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { countries, Country } from '../data/countries';
-import { PhoneInputProps } from '../types';
-import { DEFAULT_STYLES, DEFAULT_ERROR_STYLES, DEFAULT_COLORS } from '../constants/styles';
-import { CountryPickerButton } from './CountryPickerButton';
-import { CountryPickerModal } from './CountryPickerModal';
-import { formatPhoneNumber, getMaxLength, getPlaceholder } from '../utils/phoneUtils';
+import React, { useState, useCallback, useMemo } from "react";
+import { View, Text, TextInput, StyleSheet } from "react-native";
+import { countries, Country } from "../data/countries";
+import { PhoneInputProps } from "../types";
+import {
+  DEFAULT_STYLES,
+  DEFAULT_ERROR_STYLES,
+  DEFAULT_COLORS,
+} from "../constants/styles";
+import { CountryPickerButton } from "./CountryPickerButton";
+import { CountryPickerModal } from "./CountryPickerModal";
+import {
+  formatPhoneNumber,
+  getMaxLength,
+  getPlaceholder,
+} from "../utils/phoneUtils";
 
 export const PhoneInput: React.FC<PhoneInputProps> = ({
   value,
   onChange,
-  defaultCountry = 'US',
+  defaultCountry = "US",
   includeDialCode = false,
   label,
   error,
@@ -21,13 +29,17 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   countryListConfig = {},
 }) => {
   const [selectedCountry, setSelectedCountry] = useState<Country>(
-    countries.find((c) => c.code === defaultCountry) || countries[0]
+    countries.find((c) => c.code === defaultCountry) || countries[0],
   );
   const [modalVisible, setModalVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const mergedStyles = {
-    container: [styles.container, DEFAULT_STYLES.containerStyle, customStyles.containerStyle],
+    container: [
+      styles.container,
+      DEFAULT_STYLES.containerStyle,
+      customStyles.containerStyle,
+    ],
     input: [DEFAULT_STYLES.inputStyle, customStyles.inputStyle],
     label: [DEFAULT_STYLES.labelStyle, customStyles.labelStyle],
   };
@@ -37,49 +49,57 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
     ...customErrorStyles,
   };
 
-  const filteredCountries = useMemo(() => 
-    countries.filter((country) =>
-      country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      country.dial_code.includes(searchQuery)
-    ),
-    [searchQuery]
+  const filteredCountries = useMemo(
+    () =>
+      countries.filter(
+        (country) =>
+          country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          country.dial_code.includes(searchQuery),
+      ),
+    [searchQuery],
   );
 
-  const handleCountrySelect = useCallback((country: Country) => {
-    setSelectedCountry(country);
-    setModalVisible(false);
-    onChange('', country);
-  }, [onChange]);
+  const handleCountrySelect = useCallback(
+    (country: Country) => {
+      setSelectedCountry(country);
+      setModalVisible(false);
+      onChange("", country);
+    },
+    [onChange],
+  );
 
-  const handleChangeText = useCallback((text: string) => {
-    const numericValue = text.replace(/\D/g, '');
-    const maxLength = getMaxLength(selectedCountry);
-    const truncatedValue = numericValue.slice(0, maxLength);
-    
-    if (includeDialCode) {
-      const dialCode = selectedCountry.dial_code.replace('+', '');
-      onChange(dialCode + truncatedValue, selectedCountry);
-    } else {
-      onChange(truncatedValue, selectedCountry);
-    }
-  }, [selectedCountry, onChange, includeDialCode]);
+  const handleChangeText = useCallback(
+    (text: string) => {
+      const numericValue = text.replace(/\D/g, "");
+      const maxLength = getMaxLength(selectedCountry);
+      const truncatedValue = numericValue.slice(0, maxLength);
+
+      if (includeDialCode) {
+        const dialCode = selectedCountry.dial_code.replace("+", "");
+        onChange(dialCode + truncatedValue, selectedCountry);
+      } else {
+        onChange(truncatedValue, selectedCountry);
+      }
+    },
+    [selectedCountry, onChange, includeDialCode],
+  );
 
   return (
     <View>
       {label && (
-        <Text 
+        <Text
           style={[
             mergedStyles.label,
-            isError && { color: errorStyles.errorTextColor }
+            isError && { color: errorStyles.errorTextColor },
           ]}
         >
           {label}
         </Text>
       )}
-      <View 
+      <View
         style={[
           mergedStyles.container,
-          isError && { borderColor: errorStyles.errorBorderColor }
+          isError && { borderColor: errorStyles.errorBorderColor },
         ]}
       >
         <CountryPickerButton
@@ -92,30 +112,32 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
         <TextInput
           style={[
             mergedStyles.input,
-            isError && { color: errorStyles.errorTextColor }
+            isError && { color: errorStyles.errorTextColor },
           ]}
           value={formatPhoneNumber(value, selectedCountry, includeDialCode)}
           onChangeText={handleChangeText}
           keyboardType="phone-pad"
           placeholder={getPlaceholder(selectedCountry)}
-          placeholderTextColor={isError ? errorStyles.errorTextColor : DEFAULT_COLORS.placeholder}
+          placeholderTextColor={
+            isError ? errorStyles.errorTextColor : DEFAULT_COLORS.placeholder
+          }
           maxLength={getMaxLength(selectedCountry) + 10}
         />
       </View>
-      
+
       {error && (
         <View style={errorStyles.errorContainerStyle}>
-          <Text 
+          <Text
             style={[
               { color: errorStyles.errorTextColor },
-              errorStyles.errorStyle
+              errorStyles.errorStyle,
             ]}
           >
             {error}
           </Text>
         </View>
       )}
-      
+
       <CountryPickerModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
@@ -132,8 +154,8 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 10,
   },
-}); 
+});

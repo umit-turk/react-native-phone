@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { ErrorStyles, PhoneInputStyles } from '../types';
+import { StyleSheet } from "react-native";
+import { ErrorStyles, PhoneInputStyles } from "../types";
 
 export const DEFAULT_COLORS = {
-  primary: '#007AFF',
-  border: '#E5E5E5',
-  text: '#333333',
-  error: '#dc3545',
-  placeholder: '#999999',
-  background: '#FFFFFF',
-  separator: '#F5F5F5',
+  primary: "#007AFF",
+  border: "#E5E5E5",
+  text: "#333333",
+  error: "#dc3545",
+  placeholder: "#999999",
+  background: "#FFFFFF",
+  separator: "#F5F5F5",
 };
 
 export const DEFAULT_ERROR_STYLES: ErrorStyles = {
@@ -16,10 +16,10 @@ export const DEFAULT_ERROR_STYLES: ErrorStyles = {
   errorTextColor: DEFAULT_COLORS.error,
   errorStyle: {
     fontSize: 14,
-    fontStyle: 'italic' as const,
+    fontStyle: "italic" as const,
   },
   errorContainerStyle: {
-    backgroundColor: '#fff3f3',
+    backgroundColor: "#fff3f3",
     padding: 8,
     borderRadius: 4,
     marginTop: 8,
@@ -36,7 +36,7 @@ export const DEFAULT_STYLES: PhoneInputStyles = {
   },
   labelStyle: {
     fontSize: 18,
-    fontWeight: 'bold' as const,
+    fontWeight: "bold" as const,
     color: DEFAULT_COLORS.text,
     marginBottom: 8,
   },
@@ -44,13 +44,13 @@ export const DEFAULT_STYLES: PhoneInputStyles = {
     fontSize: 16,
     color: DEFAULT_COLORS.text,
     paddingLeft: 10,
-  }
+  },
 };
 
 export const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 10,
   },
   modalContainer: {
@@ -58,8 +58,8 @@ export const styles = StyleSheet.create({
     backgroundColor: DEFAULT_COLORS.background,
   },
   modalHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: DEFAULT_COLORS.border,
@@ -81,8 +81,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   countryItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 15,
   },
   countryEmoji: {
@@ -101,4 +101,4 @@ export const styles = StyleSheet.create({
     height: 1,
     backgroundColor: DEFAULT_COLORS.separator,
   },
-}); 
+});

@@ -1,7 +1,13 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { Country } from '../data/countries';
-import { DEFAULT_COLORS } from '../constants/styles';
+import React from "react";
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+} from "react-native";
+import { Country } from "../data/countries";
+import { DEFAULT_COLORS } from "../constants/styles";
 
 interface CountryListItemProps {
   item: Country;
@@ -10,16 +16,13 @@ interface CountryListItemProps {
   dialCodeStyle?: StyleProp<TextStyle>;
 }
 
-export const CountryListItem: React.FC<CountryListItemProps> = ({ 
-  item, 
+export const CountryListItem: React.FC<CountryListItemProps> = ({
+  item,
   onSelect,
   nameStyle,
-  dialCodeStyle 
+  dialCodeStyle,
 }) => (
-  <TouchableOpacity
-    style={styles.container}
-    onPress={() => onSelect(item)}
-  >
+  <TouchableOpacity style={styles.container} onPress={() => onSelect(item)}>
     <Text style={styles.emoji}>{item.emoji}</Text>
     <Text style={[styles.name, nameStyle]}>{item.name}</Text>
     <Text style={[styles.dialCode, dialCodeStyle]}>{item.dial_code}</Text>
@@ -28,8 +31,8 @@ export const CountryListItem: React.FC<CountryListItemProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 15,
   },
   emoji: {
@@ -44,4 +47,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: DEFAULT_COLORS.text,
   },
-}); 
+});

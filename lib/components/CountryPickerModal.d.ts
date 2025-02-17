@@ -1,6 +1,6 @@
-import React from 'react';
-import { Country } from '../data/countries';
-import { ModalConfig, CountryListConfig } from '../types';
+import React from "react";
+import { Country } from "../data/countries";
+import { ModalConfig, CountryListConfig } from "../types";
 interface CountryPickerModalProps {
     visible: boolean;
     onClose: () => void;

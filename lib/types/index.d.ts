@@ -1,5 +1,5 @@
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import { Country } from '../data/countries';
+import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import { Country } from "../data/countries";
 export interface ModalConfig {
     searchPlaceholder?: string;
     closeButtonText?: string;

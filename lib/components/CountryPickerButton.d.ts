@@ -1,5 +1,5 @@
-import React from 'react';
-import { Country } from '../data/countries';
+import React from "react";
+import { Country } from "../data/countries";
 interface CountryPickerButtonProps {
     country: Country;
     isError?: boolean;

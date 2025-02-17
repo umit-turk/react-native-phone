@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyleProp, TextStyle } from 'react-native';
-import { Country } from '../data/countries';
+import React from "react";
+import { StyleProp, TextStyle } from "react-native";
+import { Country } from "../data/countries";
 interface CountryListItemProps {
     item: Country;
     onSelect: (country: Country) => void;

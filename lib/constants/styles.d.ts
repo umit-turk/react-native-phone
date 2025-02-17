@@ -1,4 +1,4 @@
-import { ErrorStyles, PhoneInputStyles } from '../types';
+import { ErrorStyles, PhoneInputStyles } from "../types";
 export declare const DEFAULT_COLORS: {
     primary: string;
     border: string;

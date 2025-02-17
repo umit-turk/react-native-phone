@@ -53,12 +53,40 @@ The package works seamlessly on both iOS and Android platforms. As shown in the 
 
 ### Install via npm
 ```bash
-npm install @your-username/react-native-phone
+npm install react-native-phone
 ```
 
 ### Install via yarn
 ```bash
-yarn add @your-username/react-native-phone
+yarn add react-native-phone
+```
+
+### Basic Usage
+
+```jsx
+import React, { useState } from 'react';
+import { PhoneInput } from 'react-native-phone';
+
+const PhoneInputExample = () => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const handlePhoneChange = (value, country) => {
+    setPhoneNumber(value);
+    setSelectedCountry(country);
+  };
+
+  return (
+    <PhoneInput
+      value={phoneNumber}
+      onChange={handlePhoneChange}
+      defaultCountry="TR"
+      includeDialCode={true}
+    />
+  );
+};
+
+export default PhoneInputExample;
 ```
 
 ## Components
@@ -70,7 +98,7 @@ The main component that integrates all functionality.
 
 ```jsx
 import React, { useState } from 'react';
-import { PhoneInput } from '@your-username/react-native-phone';
+import { PhoneInput } from 'react-native-phone';
 
 const PhoneInputExample = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -126,7 +154,7 @@ Individual country item component in the selection list.
 
 ```jsx
 import React, { useState } from 'react';
-import { PhoneInput } from '@your-username/react-native-phone';
+import { PhoneInput } from 'react-native-phone';
 
 const PhoneInputExample = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -346,7 +374,7 @@ interface ErrorStyles {
 ### Complete Example with All Features
 ```jsx
 import React, { useState } from 'react';
-import { PhoneInput } from '@your-username/react-native-phone';
+import { PhoneInput } from 'react-native-phone';
 
 const CompleteExample = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -433,7 +461,7 @@ const handlePhoneChange = useCallback((value, country) => {
 ```
 
 For more information or support:
-- Check the [GitHub repository](https://github.com/your-username/react-native-phone)
-- Open an [issue](https://github.com/your-username/react-native-phone/issues)
-- Contact: [your-email@example.com] # react-native-phone
+- Check the [GitHub repository](https://github.com/umit-turk/react-native-phone)
+- Open an [issue](https://github.com/umit-turk/react-native-phone/issues)
+- Contact: [umityasarturk@gmail.com] # react-native-phone
 # react-native-phone

@@ -30,10 +30,12 @@ React Native Phone is a comprehensive phone input solution for React Native appl
 ### iOS
 ![iOS Empty State](phone-number/screenshots/ios-empty.png)
 ![iOS Input State](phone-number/screenshots/ios-input.png)
+![iOS Country Picker](phone-number/screenshots/modal.png)
 
 ### Android
 ![Android Empty State](phone-number/screenshots/android-empty.png)
 ![Android Input State](phone-number/screenshots/android-input.png)
+![Android Country Picker](phone-number/screenshots/modal-android.png)
 
 The package works seamlessly on both iOS and Android platforms. As shown in the screenshots above, it features:
 

@@ -25,6 +25,24 @@ React Native Phone is a comprehensive phone input solution for React Native appl
 - TypeScript support
 - Performance optimized
 
+## Screenshots
+
+### iOS
+![iOS Empty State](screenshots/ios-empty.png)
+![iOS Input State](screenshots/ios-input.png)
+
+### Android
+![Android Empty State](screenshots/android-empty.png)
+![Android Input State](screenshots/android-input.png)
+
+The package works seamlessly on both iOS and Android platforms. As shown in the screenshots above, it features:
+
+- Country selection with flag display
+- Country-specific phone number formatting
+- Automatic formatting
+- Platform-specific keyboard
+- Clean and modern interface
+
 ## Installation
 
 ### Prerequisites
@@ -71,6 +89,7 @@ const PhoneInputExample = () => {
   );
 };
 ```
+image.png
 
 ### 2. CountryPickerModal
 A modal component for country selection.

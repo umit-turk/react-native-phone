@@ -25,6 +25,9 @@ React Native Phone is a comprehensive phone input solution for React Native appl
 - TypeScript support
 - Performance optimized
 
+## Now you can buy me coffee
+<a href="https://www.buymeacoffee.com/umityasarturk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## Demo
 
 ### Video Demo
